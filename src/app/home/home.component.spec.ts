@@ -24,15 +24,19 @@ describe('HomeComponent', () => {
   });
   
   
-  it('should count',(() => {
+  it('should confirm initial value',(() => {
     expect(htmlElement.textContent).toEqual('number 1');
   }));
 
-  it('should inc',(() => {
+  it('should inc - dec',(() => {
     const iniVal = component.num;
     component.inc();
     fixture.detectChanges();
     const newVal = component.num;
     expect(newVal).toBeGreaterThan(iniVal);
+    component.dec();
+    fixture.detectChanges();    
+    const lastVal = component.num;
+    expect(lastVal).toEqual(iniVal);   
   })); 
 });

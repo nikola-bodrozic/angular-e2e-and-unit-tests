@@ -1,17 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpModule } from '@angular/http';
 import { UserComponent } from './user.component';
 import { UserService } from './user.service';
+import { By } from '@angular/platform-browser';
 
 describe('UserComponent', () => {
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [UserComponent]
+      imports:[HttpModule],
+      declarations: [UserComponent],
+      providers:[UserService]
     });
   }); // end foreach
 
   // inject UserService and assert data from service
-  it('should use the user name from the service', () => {
+  it('should get the user name from the true UserService', () => {
     let fixture = TestBed.createComponent(UserComponent);
     let app = fixture.debugElement.componentInstance;
     let userService = fixture.debugElement.injector.get(UserService);
@@ -38,10 +42,10 @@ describe('UserComponent', () => {
     expect(compiled.querySelector('p').textContent).not.toContain(app.user.name);
   });  
 
-  // call fake function and pass its result to component
+  // call fake getTitle function and pass its result to component
   it('plant fake getTitle function', () => {
-    let fixture = TestBed.createComponent(UserComponent);
-    let app = fixture.debugElement.componentInstance;  
+  let fixture = TestBed.createComponent(UserComponent);
+  let app = fixture.debugElement.componentInstance;  
     let userService = fixture.debugElement.injector.get(UserService); 
     let spy = spyOn(userService, 'getTitle').and.callFake( () => {
       return "Mein Titlen";
@@ -51,4 +55,14 @@ describe('UserComponent', () => {
     expect(app.title).toContain('Mein');  
   });
 
+  // 
+  it('call true UserService', () => {
+    let fixture = TestBed.createComponent(UserComponent);
+    let app = fixture.debugElement.componentInstance;  
+    let userService = TestBed.get(UserService);
+    spyOn(userService, 'getTitle').and.returnValue('My Title');
+    fixture.detectChanges();
+    const domValH1 = fixture.debugElement.query(By.css('h1')).nativeElement;
+    expect(domValH1.textContent).toContain('My Title');  
+  });
 });
