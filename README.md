@@ -20,6 +20,8 @@ Testing form in **TodoFormComponent**
 * confirms that tags exist
 * confirms that tag name must not be empty
 
+Testing **custom-http.service.spec.ts** shows how to use mock http
+
 ## e2e tests - end to end tests with protractor
 
 Run `ng e2e`. The files are `e2e/app.po.ts` & `e2e/app.e2e-spec.ts`. 
@@ -39,6 +41,8 @@ On **LoginComponent** workflow with invalid credentials
 * display message wrong credentials
 
 On **TodoFormComponent** test trigers validation message in span element
+
+
 
 
 

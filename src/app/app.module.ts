@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Http } from '@angular/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -10,6 +12,8 @@ import { AboutComponent } from './about/about.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
+import { CustomHttpService } from './custom-http.service';
+import { HttpmockComponent } from './httpmock/httpmock.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,8 @@ import { TodoFormComponent } from './todo-form/todo-form.component';
     AboutComponent,
     AdminComponent,
     LoginComponent,
-    TodoFormComponent
+    TodoFormComponent,
+    HttpmockComponent
   ],
   imports: [
     BrowserModule,
@@ -29,11 +34,14 @@ import { TodoFormComponent } from './todo-form/todo-form.component';
       {path: 'about', component:AboutComponent},      
       {path: 'admin', component:AdminComponent},      
       {path: 'login', component:LoginComponent},
-      {path: 'todo', component:TodoFormComponent} 
+      {path: 'todo', component:TodoFormComponent},      
+      {path: 'httpmock', component:HttpmockComponent}
+
     ]),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CustomHttpService, Http, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
