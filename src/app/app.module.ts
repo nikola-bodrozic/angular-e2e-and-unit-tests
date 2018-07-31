@@ -30,11 +30,12 @@ import { HttpmockComponent } from './httpmock/httpmock.component';
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
-      {path: 'home', component:HomeComponent}, 
-      {path: 'about', component:AboutComponent},      
-      {path: 'admin', component:AdminComponent},      
+      {path: 'home', component:HomeComponent},
+      {path: 'about', component:AboutComponent},
+      {path: 'admin', component:AdminComponent},
       {path: 'login', component:LoginComponent},
-      {path: 'todo', component:TodoFormComponent},      
+      {path: 'user', component:UserComponent},
+      {path: 'todo', component:TodoFormComponent},
       {path: 'httpmock', component:HttpmockComponent}
 
     ]),
