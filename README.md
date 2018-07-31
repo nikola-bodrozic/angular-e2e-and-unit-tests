@@ -3,7 +3,7 @@
 ## install
 
 run `npm install` to install dependancies, `ng serve` open browser at `http://localhost:4200/`. 
-
+make sure that you run @angular/cli@6.0.8 globaly higher version give error.
 
 ## Unit Tests
 

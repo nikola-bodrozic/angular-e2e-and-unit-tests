@@ -74,7 +74,9 @@ describe('UserComponent', () => {
       spyOn(userService, 'getDetails').and.returnValue(Promise.resolve('Data'));
       fixture.detectChanges();
       fixture.whenStable().then( () => {
-        expect(app.data).toBe('Data');
+        fixture.detectChanges();
+        const domValH2 = fixture.debugElement.query(By.css('h2')).nativeElement;
+        expect(domValH2.textContent).toContain('Data');
        } );
     }));
 });
